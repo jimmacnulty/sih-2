@@ -1,0 +1,33 @@
+{
+    "accident-prone":{
+        "0":{
+            "uid":[],
+            "report_id":[],
+            "gps": [],
+            "title": [],
+            "desc":[],
+            "date-time":[],
+            "offline":,
+            "media":[],
+            "status":[]
+        }
+    },
+    "maintainence-report":{
+        "0":{
+            "uid":[],
+            "report_id":[],
+            "gps": [],
+            "title": [],
+            "desc":[],
+            "date-time":[],
+            "offline":[],
+            "media":[],
+            "status":[]
+        }
+    },
+    "user":{
+        "uid":[],
+        "username":[],
+
+    }
+}
