@@ -27,8 +27,9 @@ firebase.initializeApp(config);
     AddComponent
   ],
   imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
