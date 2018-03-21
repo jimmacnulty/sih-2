@@ -1,13 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
+import { MaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AddComponent } from './add/add.component';
+import { LoginComponent } from './login/login.component';
 import { appRoutes } from './route'
 import * as firebase from 'firebase';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
+
 
 
  // Initialize Firebase
@@ -24,14 +31,17 @@ firebase.initializeApp(config);
 @NgModule({
   declarations: [
     AppComponent,
-    AddComponent
+    AddComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule
-    
+    MaterialModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })  
 

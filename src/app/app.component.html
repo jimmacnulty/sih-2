@@ -1,1 +1,23 @@
+
+
+    <mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn">
+        <span>
+          <img src="" class="angular-logo">
+            Tickets
+        </span>
+        <span class="fill-remaining-space"></span>
+        <button mat-button>Option 01</button>
+        <button mat-button>Option 02</button>
+        <button mat-button routerLink="login">Login</button>
+        <button mat-button (click)="onLogout()" *ngIf="isLoggedIn">Logout</button>
+      </mat-toolbar>
+
 <router-outlet></router-outlet>
+
+
+
+
+
+
+
+
