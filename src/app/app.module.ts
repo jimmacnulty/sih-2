@@ -14,6 +14,11 @@ import { appRoutes } from './route'
 import * as firebase from 'firebase';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { IssueListingComponent } from './issue-listing/issue-listing.component';
+import { WizardComponent } from './wizard/wizard.component';
+import { IssueDetailsComponent } from './issue-details/issue-details.component';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
+import { TicketListingComponent } from './ticket-listing/ticket-listing.component';
 
 
 
@@ -32,7 +37,12 @@ firebase.initializeApp(config);
   declarations: [
     AppComponent,
     AddComponent,
-    LoginComponent
+    LoginComponent,
+    IssueListingComponent,
+    WizardComponent,
+    IssueDetailsComponent,
+    TicketDetailsComponent,
+    TicketListingComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
