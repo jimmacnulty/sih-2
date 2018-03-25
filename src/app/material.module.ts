@@ -14,7 +14,8 @@ import {
   MatIconModule,
   MatFormFieldModule,
   MatInputModule,
-  MatPaginator
+  MatPaginator,
+  MatStepperModule
 } from '@angular/material';
 
 @NgModule({
@@ -33,7 +34,8 @@ import {
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatStepperModule
 ],
   exports: [
     MatMenuModule,
@@ -50,7 +52,8 @@ import {
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatStepperModule
   ],
   declarations: [],
   providers: [],
