@@ -19,6 +19,8 @@ import { WizardComponent } from './wizard/wizard.component';
 import { IssueDetailsComponent } from './issue-details/issue-details.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { TicketListingComponent } from './ticket-listing/ticket-listing.component';
+import { MapComponent } from './map/map.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -42,14 +44,19 @@ firebase.initializeApp(config);
     WizardComponent,
     IssueDetailsComponent,
     TicketDetailsComponent,
-    TicketListingComponent
+    TicketListingComponent,
+    MapComponent
+    
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     MaterialModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC9YhXuCIwp98IRGMMbJypBPVhJaTonx3k'
+    })
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
