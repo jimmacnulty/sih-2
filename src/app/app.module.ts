@@ -20,12 +20,12 @@ import { WizardComponent } from './wizard/wizard.component';
 import { IssueDetailsComponent } from './issue-details/issue-details.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { TicketListingComponent } from './ticket-listing/ticket-listing.component';
-<<<<<<< HEAD
+
 import { SignupComponent } from './signup/signup.component';
-=======
+
 import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
->>>>>>> f6ce9a45bf10d88df32bb039c5eb74cac538f821
+
 
 
 
@@ -42,12 +42,12 @@ import { AgmCoreModule } from '@agm/core';
     IssueDetailsComponent,
     TicketDetailsComponent,
     TicketListingComponent,
-<<<<<<< HEAD
-    SignupComponent
-=======
+
+    SignupComponent,
+
     MapComponent
     
->>>>>>> f6ce9a45bf10d88df32bb039c5eb74cac538f821
+
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -55,14 +55,14 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-<<<<<<< HEAD
+
     FormsModule,
-    ArchwizardModule
-=======
+    ArchwizardModule,
+
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC9YhXuCIwp98IRGMMbJypBPVhJaTonx3k'
     })
->>>>>>> f6ce9a45bf10d88df32bb039c5eb74cac538f821
+
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
