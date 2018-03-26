@@ -20,53 +20,25 @@ import { WizardComponent } from './wizard/wizard.component';
 import { IssueDetailsComponent } from './issue-details/issue-details.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { TicketListingComponent } from './ticket-listing/ticket-listing.component';
-<<<<<<< HEAD
+vvvvvvvvvvvvvvvvvvvv
 import { SignupComponent } from './signup/signup.component';
-=======
 import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
->>>>>>> f6ce9a45bf10d88df32bb039c5eb74cac538f821
+^^^^^^^^^^^^^^^^^^^^
 
 
 
  // Initialize Firebase
  
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    AddComponent,
-    LoginComponent,
-    IssueListingComponent,
-    WizardComponent,
-    IssueDetailsComponent,
-    TicketDetailsComponent,
-    TicketListingComponent,
-<<<<<<< HEAD
-    SignupComponent
-=======
-    MapComponent
-    
->>>>>>> f6ce9a45bf10d88df32bb039c5eb74cac538f821
-  ],
-  imports: [
-    RouterModule.forRoot(appRoutes),
-    MaterialModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-<<<<<<< HEAD
-    FormsModule,
-    ArchwizardModule
-=======
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC9YhXuCIwp98IRGMMbJypBPVhJaTonx3k'
-    })
->>>>>>> f6ce9a45bf10d88df32bb039c5eb74cac538f821
-  ],
-  providers: [AuthService, AuthGuard],
-  bootstrap: [AppComponent]
-})  
+@NgModule({ declarations: [ AppComponent, AddComponent,
+  LoginComponent, IssueListingComponent, WizardComponent,
+  IssueDetailsComponent, TicketDetailsComponent,
+  TicketListingComponent, SignupComponent ], imports: [
+  RouterModule.forRoot(appRoutes), MaterialModule, BrowserModule,
+  BrowserAnimationsModule, ReactiveFormsModule, FormsModule,
+  ArchwizardModule ], providers: [AuthService, AuthGuard], bootstrap:
+  [AppComponent] })
 
   
 export class AppModule { }

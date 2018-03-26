@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ArchwizardModule } from 'angular-archwizard';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -20,17 +19,21 @@ import { WizardComponent } from './wizard/wizard.component';
 import { IssueDetailsComponent } from './issue-details/issue-details.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { TicketListingComponent } from './ticket-listing/ticket-listing.component';
-<<<<<<< HEAD
-import { SignupComponent } from './signup/signup.component';
-=======
 import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
->>>>>>> f6ce9a45bf10d88df32bb039c5eb74cac538f821
 
 
 
  // Initialize Firebase
- 
+ var config = {
+  apiKey: "AIzaSyBXtKT8C2d53fKzizznKFefOVqC5M46mSw",
+  authDomain: "sih-2-3e356.firebaseapp.com",
+  databaseURL: "https://sih-2-3e356.firebaseio.com",
+  projectId: "sih-2-3e356",
+  storageBucket: "",
+  messagingSenderId: "693586778503"
+};
+firebase.initializeApp(config);
 
 @NgModule({
   declarations: [
@@ -42,12 +45,8 @@ import { AgmCoreModule } from '@agm/core';
     IssueDetailsComponent,
     TicketDetailsComponent,
     TicketListingComponent,
-<<<<<<< HEAD
-    SignupComponent
-=======
     MapComponent
     
->>>>>>> f6ce9a45bf10d88df32bb039c5eb74cac538f821
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -55,14 +54,9 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-<<<<<<< HEAD
-    FormsModule,
-    ArchwizardModule
-=======
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC9YhXuCIwp98IRGMMbJypBPVhJaTonx3k'
     })
->>>>>>> f6ce9a45bf10d88df32bb039c5eb74cac538f821
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
