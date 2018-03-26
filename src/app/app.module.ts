@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ArchwizardModule } from 'angular-archwizard';
 
 
 import { AppComponent } from './app.component';
@@ -19,19 +20,12 @@ import { WizardComponent } from './wizard/wizard.component';
 import { IssueDetailsComponent } from './issue-details/issue-details.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { TicketListingComponent } from './ticket-listing/ticket-listing.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 
  // Initialize Firebase
- var config = {
-  apiKey: "AIzaSyBXtKT8C2d53fKzizznKFefOVqC5M46mSw",
-  authDomain: "sih-2-3e356.firebaseapp.com",
-  databaseURL: "https://sih-2-3e356.firebaseio.com",
-  projectId: "sih-2-3e356",
-  storageBucket: "",
-  messagingSenderId: "693586778503"
-};
-firebase.initializeApp(config);
+ 
 
 @NgModule({
   declarations: [
@@ -42,14 +36,17 @@ firebase.initializeApp(config);
     WizardComponent,
     IssueDetailsComponent,
     TicketDetailsComponent,
-    TicketListingComponent
+    TicketListingComponent,
+    SignupComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     MaterialModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    ArchwizardModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

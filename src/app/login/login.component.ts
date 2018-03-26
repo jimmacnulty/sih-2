@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl , NgForm} from '@angular/forms';
 import * as firebase from 'firebase';
 import { AuthService } from '../auth/auth.service'
 
@@ -8,7 +8,7 @@ import { AuthService } from '../auth/auth.service'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   form: FormGroup;                    
   private formSubmitAttempt: boolean; 
@@ -23,18 +23,11 @@ export class LoginComponent implements OnInit {
     //   console.log("new usr added");
     // })
     this.form = new FormGroup({
-      userName : new FormControl(),
+      email : new FormControl(),
       password : new FormControl()
    });
   
   } 
-
-  ngOnInit() {
-    this.form == this.fb.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
-    })
-  }
 
   isFieldinvalid(field : string) {
     return (
@@ -43,11 +36,11 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-      this.authservice.login(this.form.value); 
-    }
-    this.formSubmitAttempt = true;             
+  onSubmit(form : NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+
+    this.authservice.login(email, password);
   }
 
 }

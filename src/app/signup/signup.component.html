@@ -1,8 +1,8 @@
-<div class="logincontent">
+<div class="signup-content">
   <mat-card>
     <mat-card-content>
-      <form [formGroup]="form" #loginform = "ngForm" (ngSubmit) = "onSubmit(loginform)">
-        <p>Please Login to continue</p>
+      <form [formGroup]="form" #signupform = "ngForm" (ngSubmit) = "onSubmit(signupform)">
+        <p>Please Sign Up to continue</p>
         <mat-input-container class="full-width-input">
           <input matInput ngModel name = "email" placeholder="Email" 
                  formControlName="email" required>
@@ -17,7 +17,7 @@
             Please inform your password
           </mat-error>
         </mat-input-container>
-        <button [disabled] = "!loginform.valid" mat-raised-button color="primary" type="submit" >Login</button>
+        <button [disabled] = "!signupform.valid" mat-raised-button color="primary" type="submit">Sign Up</button>
       </form>
     </mat-card-content>
   </mat-card>
