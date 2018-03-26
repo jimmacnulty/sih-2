@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { } from '../material.module';
+
 
 @Component({
   selector: 'app-issue-details',
@@ -13,3 +15,5 @@ export class IssueDetailsComponent implements OnInit {
   }
 
 }
+
+

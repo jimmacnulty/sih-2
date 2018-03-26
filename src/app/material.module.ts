@@ -15,7 +15,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatPaginator,
-  MatStepperModule
+  MatStepperModule,
+  MatGridListModule
 } from '@angular/material';
 
 @NgModule({
@@ -35,7 +36,8 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
-    MatStepperModule
+    MatStepperModule,
+    MatGridListModule
 ],
   exports: [
     MatMenuModule,
@@ -53,7 +55,8 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
-    MatStepperModule
+    MatStepperModule,
+    MatGridListModule
   ],
   declarations: [],
   providers: [],

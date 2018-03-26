@@ -8,7 +8,7 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 })
 export class IssueListingComponent implements OnInit {
 
-  displayedColumns = ['id', 'dept', 'title', 'loc', 'Verify'];
+  displayedColumns = ['id', 'dept', 'title', 'loc', 'verify'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

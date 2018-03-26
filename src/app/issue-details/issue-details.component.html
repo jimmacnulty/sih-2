@@ -1,3 +1,42 @@
-<p>
-  issue-details works!
-</p>
+
+<mat-grid-list cols="3" row-height="500px">
+  <mat-grid-tile>
+<mat-card class="example-card">
+    <mat-card-content>
+    <p>ID:</p>
+    <p>Department</p>
+    <p>Cordinates</p>
+    <p>Status:</p>
+</mat-card-content>
+</mat-card>  
+</mat-grid-tile>
+ <mat-grid-tile>
+ <mat-card class="example-card" >
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Details of the current step</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <app-wizard></app-wizard>
+    </mat-card-content>
+    
+  </mat-card>
+</mat-grid-tile>
+
+
+
+</mat-grid-list>
+<mat-card class="example-card1">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Location</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <app-map></app-map>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>COPY LOCATION</button>
+    </mat-card-actions>
+  </mat-card>

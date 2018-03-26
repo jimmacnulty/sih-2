@@ -1,28 +1,4 @@
 
-<mat-card class="example-card" align = "start">
-  <mat-card-content>
-    <title> Issue Name</title>
-    <b>ID :</b>
-    <b> Location :</b>
-    <b>Department :</b>
-    <b>Status :</b>
-  </mat-card-content>
-</mat-card>
-
-<mat-card class="example-card" align = "end">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Location</mat-card-title>
-  </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of Google Maps">
-  <mat-card-content>
-    <!-- Add Maps -->
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>COPY LOCATION</button>
-  </mat-card-actions>
-</mat-card>
-
 
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
@@ -54,7 +30,8 @@
     <ng-container matColumnDef="verify">
       <mat-header-cell *matHeaderCellDef> Location Cordinates </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.verify}} 
-        <button mat-raised-button color="primary" >Verify</button>
+          
+              
       </mat-cell>
     </ng-container>
 
