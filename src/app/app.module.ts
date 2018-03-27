@@ -18,7 +18,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { IssueListingComponent } from './issue-listing/issue-listing.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { IssueDetailsComponent } from './issue-details/issue-details.component';
-import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
+import { TableBasicExample } from './ticket-details/ticket-details.component';
 import { TicketListingComponent } from './ticket-listing/ticket-listing.component';
 
 import { SignupComponent } from './signup/signup.component';
@@ -40,7 +40,7 @@ import { AgmCoreModule } from '@agm/core';
     IssueListingComponent,
     WizardComponent,
     IssueDetailsComponent,
-    TicketDetailsComponent,
+    TableBasicExample,
     TicketListingComponent,
 
     SignupComponent,
