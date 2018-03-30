@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+
 @Component({
   selector: 'app-issue-details',
   templateUrl: './issue-details.component.html',

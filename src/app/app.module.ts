@@ -32,6 +32,7 @@ import { AgmCoreModule } from '@agm/core';
 
 
 
+
  // Initialize Firebase
  
 
@@ -42,9 +43,11 @@ import { AgmCoreModule } from '@agm/core';
     LoginComponent,
     IssueListingComponent,
     WizardComponent,
+
     IssueDetailsComponent,
     TicketDetailsComponent,
     TicketListingComponent,
+    
 
     SignupComponent,
 

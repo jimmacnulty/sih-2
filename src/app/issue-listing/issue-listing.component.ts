@@ -3,6 +3,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-issue-listing',
@@ -21,16 +22,27 @@ export class IssueListingComponent implements OnInit {
   displayedColumns = ['id', 'dept', 'title', 'loc', 'symbol'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor() { }
+  constructor(private router : Router, ) { }
 
   ngOnInit() {
   }
+
+  nav(){
+    this.router.navigate(['/ticketdetail'])
+  }
+
+  verify(){
+    
+  }
+
+
 
 }
 

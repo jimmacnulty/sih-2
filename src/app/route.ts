@@ -10,21 +10,15 @@ import { WizardComponent } from './wizard/wizard.component';
 import { IssueDetailsComponent } from './issue-details/issue-details.component';
 import { TicketListingComponent } from './ticket-listing/ticket-listing.component'
 
-
 export const appRoutes:Routes = [
     { path: 'add', component: AddComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'wizard', component: WizardComponent},
-    {
-        path: 'issue-list',
-        component: IssueListingComponent
-    },
-    {
-        path: 'issue-det',
-        component: IssueDetailsComponent 
-    },
+    { path: 'issue-list', component: IssueListingComponent },
+    { path: 'issue-det', component: IssueDetailsComponent },
     { path: 'ticketlist', component: TicketListingComponent},
+    { path: 'ticketdetail', component: TicketDetailsComponent},
     { path: '', redirectTo: '/', pathMatch: 'full' }
 ]
 
