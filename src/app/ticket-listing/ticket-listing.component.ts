@@ -12,15 +12,21 @@ import { Observable } from 'rxjs/Observable'
 export class TicketListingComponent implements OnInit {
 
 
-  users: Observable<any[]>;  
+  users: Observable<any>;  
 
   constructor(private af: AngularFireAuth, private db: AngularFireDatabase) {
   
-    db.list('users/' + af.auth.currentUser.uid, ref=> ref).valueChanges().subscribe(data => {
-      console.log(data)
+    db.object('users/' + af.auth.currentUser.uid).valueChanges().subscribe(data => {
+      if ( data['role'] == 0){
+        this.getrole();
+      }else{
+        console.log('You are not authorized to access this page!!')
+      }
     })
+  }
 
-
+  getrole(){
+    
   }
 
   ngOnInit() {
