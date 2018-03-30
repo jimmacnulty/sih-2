@@ -29,6 +29,7 @@ export class IssueListingComponent implements OnInit {
 
   ngAfterViewInit() {
     this.data.subscribe(data => {
+      console.log(data);
       this.dataSource = new MatTableDataSource<Element>(data);
       this.dataSource.paginator = this.paginator;
     })
@@ -46,8 +47,8 @@ export class IssueListingComponent implements OnInit {
     this.router.navigate(['/ticketdetail'])
   }
 
-  verify(){
-    
+  verify(a, b){
+    console.log(a, b);
   }
 
 
