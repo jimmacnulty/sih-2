@@ -1,3 +1,11 @@
 <p>
   ticket-listing works!
 </p>
+<!-- <h1>{{ (user | async)?.name }}</h1> -->
+
+  <ul>
+      <li *ngFor="let user of users | async">
+         {{ user.role }}
+      </li>
+    </ul>
+

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { } from '../material.module';
-
+import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Component({
@@ -10,10 +10,31 @@ import { } from '../material.module';
 })
 export class IssueDetailsComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+
+  constructor(private router: Router, private af:AngularFireAuth) { 
+
+    // firebase.database().ref('users').once('value', (snapshot) => {
+    //   let snap = snapshot.val();
+    //   snap.orderByKey().on("child_added", function (data) {
+    //     console.log(data.key);
+    //   })
+    // })
+  }
 
   ngOnInit() {
+    this.user = this.af.auth.currentUser;
   }
+  
+  // editPost() {
+  //   if(this.auth.canEdit(this.user)) {
+  //     this.postRef.update({ title: 'Edited Title!'})
+  //   } 
+  //   else {
+  //     console.error('you are not allowed to do that!')
+  //   }
+  
+  // }
 
 }
 
