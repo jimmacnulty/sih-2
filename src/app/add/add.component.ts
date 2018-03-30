@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
 
 import { MaterialModule } from '../material.module';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { AngularFireDatabase } from 'angularfire2/database';
 
-
+// import firebase from 'firebase';
 
 const ELEMENT_DATA: any = [];
 
@@ -18,7 +18,7 @@ const arr = []
 
 export class AddComponent implements OnInit {
 
-  displayedColumns = ['Name', 'No', 'Symbol', 'Weight'];
+  displayedColumns = ['description', 'No', 'Symbol', 'Weight'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -29,17 +29,22 @@ export class AddComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  constructor() {
+  constructor(private db: AngularFireDatabase, private af: AngularFireDatabase) {
     
-    firebase.database().ref("issues2").once('value', (snapshot) => {
-      let snap = snapshot.val()
-      for (let i in snap) {
-        console.log(snap[i])
-        ELEMENT_DATA.push(snap[i])
-        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-      }
-
+    this.db.list('issues/0').valueChanges().subscribe(data => {
+      console.log(data);
+      this.dataSource = new MatTableDataSource(data);
     })
+    
+    // firebase.database().ref("issues2").once('value', (snapshot) => {
+    //   let snap = snapshot.val()
+    //   for (let i in snap) {
+    //     console.log(snap[i])
+    //     ELEMENT_DATA.push(snap[i])
+    //     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    //   }
+
+    // })
 
     console.log(ELEMENT_DATA);
 
@@ -59,21 +64,21 @@ export class AddComponent implements OnInit {
       "Weight": "45",
       "Symbol": "Yaeh"
     }
-    firebase.database().ref("issues2").push(acc).then(function () {
-      console.log("added");
-    })
+    // firebase.database().ref("issues2").push(acc).then(function () {
+    //   console.log("added");
+    // })
   }
 
   
   
 
 }
-// export interface Element {
-//   name: string;
-//   position: number;
-//   weight: number;
-//   symbol: string;
-// }
+export interface Element {
+  description: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
 
 
 

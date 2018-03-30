@@ -1,32 +1,32 @@
 
 <mat-grid-list cols="3" row-height="500px">
   <mat-grid-tile>
-<mat-card class="example-card">
-    <mat-card-content>
-    <p>ID:</p>
-    <p>Department</p>
-    <p>Cordinates</p>
-    <p>Status:</p>
-</mat-card-content>
-</mat-card>  
-</mat-grid-tile>
- <mat-grid-tile>
- <mat-card class="example-card" >
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Details of the current step</mat-card-title>
-    </mat-card-header>
-    
-    <mat-card-content>
-      <app-wizard></app-wizard>
-    </mat-card-content>
-    
-  </mat-card>
-</mat-grid-tile>
-
-
-
+    {{user | json}}
+  <mat-card class="example-card">
+      <mat-card-content>
+      <p>ID:</p>
+      <p>Department</p>
+      <p>Cordinates</p>
+      <p>Status:</p>
+      <button mat-button > EDIT</button>
+  </mat-card-content>
+  </mat-card>  
+  </mat-grid-tile>
+  <mat-grid-tile>
+  <mat-card class="example-card" >
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Details of the current step</mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <app-wizard></app-wizard>
+      </mat-card-content>
+      
+    </mat-card>
+  </mat-grid-tile>
 </mat-grid-list>
+
 <mat-card class="example-card1">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>

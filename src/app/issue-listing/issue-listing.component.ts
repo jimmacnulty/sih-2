@@ -1,12 +1,22 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database'
+import { DataSource } from '@angular/cdk/collections';
+import { Observable } from 'rxjs/Observable';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-issue-listing',
   templateUrl: './issue-listing.component.html',
-  styleUrls: ['./issue-listing.component.css']
+  styleUrls: ['./issue-listing.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('void', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
+      state('*', style({ height: '*', visibility: 'visible' })),
+      transition('void <=> *', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ]
 })
 export class IssueListingComponent implements OnInit {
 
