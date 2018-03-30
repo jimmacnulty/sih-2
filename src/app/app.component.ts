@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from './auth/auth.service';
-import * as firebase from 'firebase';
+import { AngularFireAuth} from 'angularfire2/auth';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -10,30 +10,39 @@ import * as firebase from 'firebase';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent  implements OnInit{
-
-  isLoggedIn$: Observable<Boolean>;
+export class AppComponent implements OnInit{
   
-  constructor(private authservice: AuthService) {}
+  isLoggedIn: boolean = false;
+  
+  constructor(private af: AngularFireAuth, private router:Router) {
+    this.af.authState.subscribe(user => {
+      if (user) {
+        //logged in
+        console.log('Logged in', user.uid);
+        this.isLoggedIn = true;
+        // this.router.navigate(['/add']);
+      } else{
+        //logged out
+        this.isLoggedIn = false;
+        this.router.navigate(['/login']);
+      }
+    })
+  }
 
   ngOnInit() {
-    firebase.initializeApp(
-      {
-        apiKey: "AIzaSyBXtKT8C2d53fKzizznKFefOVqC5M46mSw",
-        authDomain: "sih-2-3e356.firebaseapp.com",
-        databaseURL: "https://sih-2-3e356.firebaseio.com",
-        projectId: "sih-2-3e356",
-        storageBucket: "",
-        messagingSenderId: "693586778503"
-      }
-    )
   }
-  
-    onLogout(){
-      this.authservice.logout();                      
-    }
+
+  onLogIn() {
+    this.router.navigate(['/login']);
+  }
+
+  onLogOut() {
+    this.af.auth.signOut();
+  }
 
 
   title = 'app';  
 }
+
+
 

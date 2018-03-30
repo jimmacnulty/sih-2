@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
-import * as firebase from 'firebase';
-import { AuthService } from '../auth/auth.service';
+import { AngularFireAuth } from "angularfire2/auth";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   form: FormGroup;                    
   private formSubmitAttempt: boolean; 
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { 
+  constructor(private fb: FormBuilder, private af :AngularFireAuth, private router: Router) { 
     this.form = new FormGroup({
       email : new FormControl(),
       password : new FormControl()
@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
   onSubmit(form : NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.signUp(email, password);
+    this.af.auth.createUserWithEmailAndPassword(email, password);
   }
 
   isFieldinvalid(field : string) {

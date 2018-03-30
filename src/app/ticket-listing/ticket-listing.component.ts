@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable'
+
 
 @Component({
   selector: 'app-ticket-listing',
@@ -7,7 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketListingComponent implements OnInit {
 
-  constructor() { }
+
+  items: Observable<any>
+  role: Observable<any>
+  id: Observable<any>
+  
+  constructor (private af : AngularFireAuth, db : AngularFireDatabase) { 
+    db.object('users/' + af.auth.currentUser.uid).valueChanges().subscribe(data => {
+      console.log(data);
+    })
+
+  }
 
   ngOnInit() {
   }

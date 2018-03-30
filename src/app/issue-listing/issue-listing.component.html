@@ -27,13 +27,40 @@
       <mat-cell *matCellDef="let element"> {{element.loc}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="verify">
-      <mat-header-cell *matHeaderCellDef> Location Cordinates </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.verify}} 
-          
-              
-      </mat-cell>
-    </ng-container>
+
+    <!-- <ng-container matColumnDef="verify">
+        <mat-header-cell *matHeaderCellDef> Verification </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.verify}}</mat-cell>
+      </ng-container> -->
+
+      <ng-container matColumnDef="expandedDetail">
+          <mat-cell *matCellDef="let detail"> 
+            The symbol for {{detail.element.id}} is {{detail.element.symbol}}
+          </mat-cell>
+        </ng-container>
+
+      <mat-row *matRowDef="let row; columns: displayedColumns;"
+              matRipple 
+              class="element-row" 
+              [class.expanded]="expandedElement == row"
+              (click)="expandedElement = row">
+      </mat-row>
+
+      <mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
+              [@detailExpand]="row.element == expandedElement ? 'expanded' : 'collapsed'"
+              style="overflow: hidden"> 
+      </mat-row>
+  
+      <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"
+              matRipple 
+              class="element-row"  
+              [class.expanded]="expandedElement == row" 
+              (click)="expandedElement = row"></mat-row>
+      <mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
+              [@detailExpand]="row.element == expandedElement ? 'expanded' : 'collapsed'"
+              style="overflow: hidden"> 
+      </mat-row> -->
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
