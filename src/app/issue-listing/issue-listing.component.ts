@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { AngularFireDatabase } from 'angularfire2/database'
+import { AngularFireDatabase, snapshotChanges } from 'angularfire2/database'
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { Router } from '@angular/router';
+import { HistoryService } from "../services/history.service";
 
 @Component({
   selector: 'app-issue-listing',
@@ -26,18 +27,25 @@ export class IssueListingComponent implements OnInit {
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+    constructor(private router: Router, private db: AngularFireDatabase, private history: HistoryService) {
+      this.data = this.db.list('issues/0').snapshotChanges();
+  
+     }
 
   ngAfterViewInit() {
-    this.data.subscribe(data => {
+    this.data.subscribe(snapshotChanges => {
+      let data = [];
+      snapshotChanges.forEach(x => {
+        let y = x.payload.val();
+        y['key'] = x.key;
+        data.push(y);
+      });
+      console.log(data);
       this.dataSource = new MatTableDataSource<Element>(data);
       this.dataSource.paginator = this.paginator;
     })
   }
-
-  constructor(private router: Router, private db: AngularFireDatabase) {
-    this.data = this.db.list('issues/0').valueChanges();
-
-   }
 
   ngOnInit() {
   }
@@ -46,8 +54,11 @@ export class IssueListingComponent implements OnInit {
     this.router.navigate(['/ticketdetail'])
   }
 
-  verify(){
-    
+  verify(uid, tid){
+    //takeNote();
+    let note = 'Verified the issue.'
+    this.history.create(tid, uid, note, 'verified');
+    this.history.save();
   }
 
 

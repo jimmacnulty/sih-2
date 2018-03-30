@@ -26,8 +26,8 @@
                       <mat-expansion-panel>
                         <mat-expansion-panel-header>
                           <mat-panel-title>
-                            Lat : {{elemnent.location.lat}} <br>
-                            Lng : {{elemnent.location.lng}}
+                            Lat : {{element.location.lat}} <br>
+                            Lng : {{element.location.lng}}
                           </mat-panel-title>
                           
                         </mat-expansion-panel-header>
@@ -56,7 +56,7 @@
 
                             </mat-grid-list>
                             <div class = "button">
-                                <button mat-button color="primary" (click) = "verify(element.uid, element.$id)">Verify</button>
+                                <button mat-button color="primary" (click) = "verify(element.uid, element.key)">Verify</button>
                               </div>
                             
                             <div class = "button">
@@ -85,7 +85,7 @@
       
   
       <!-- Symbol Column -->
-      <ng-container matColumnDef="loc">
+      <ng-container matColumnDef="uid">
         <mat-header-cell *matHeaderCellDef> UID </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.uid}} </mat-cell>
       </ng-container>
