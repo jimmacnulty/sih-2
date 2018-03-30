@@ -54,6 +54,7 @@ export class IssueListingComponent implements OnInit {
     this.router.navigate(['/ticketdetail'])
   }
 
+
   verify(uid, tid){
     //takeNote();
     let note = 'Verified the issue.'
