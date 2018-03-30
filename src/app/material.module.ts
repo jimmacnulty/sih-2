@@ -16,7 +16,10 @@ import {
   MatInputModule,
   MatPaginator,
   MatStepperModule,
-  MatGridListModule
+  MatGridListModule,
+  MatExpansionModule,
+  MatButtonToggleModule
+
 } from '@angular/material';
 
 @NgModule({
@@ -37,7 +40,10 @@ import {
     MatInputModule,
     MatPaginatorModule,
     MatStepperModule,
-    MatGridListModule
+    MatGridListModule,
+    MatExpansionModule,
+    MatButtonToggleModule
+    
 ],
   exports: [
     MatMenuModule,
@@ -56,7 +62,10 @@ import {
     MatInputModule,
     MatPaginatorModule,
     MatStepperModule,
-    MatGridListModule
+    MatGridListModule,
+    MatExpansionModule,
+    MatButtonToggleModule
+    
   ],
   declarations: [],
   providers: [],

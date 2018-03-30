@@ -1,47 +1,114 @@
 
 
+
 <div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource">
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="dept">
-      <mat-header-cell *matHeaderCellDef> Department </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.dept}} </mat-cell>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef> Title / Description </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="loc">
-      <mat-header-cell *matHeaderCellDef> Location Cordinates </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.loc}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="verify">
-      <mat-header-cell *matHeaderCellDef> Location Cordinates </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.verify}} 
-          
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <div class = "id">
+          <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef  [ngClass]="'customWidthClass'"> ID </mat-header-cell>
               
-      </mat-cell>
-    </ng-container>
+              <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass'"> {{element.id}} </mat-cell>
+              
+            </ng-container>
+      
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+      </div>
+        
+      <!-- Name Column -->
+      <div class = "dept">
+          <ng-container matColumnDef="dept">
+              <mat-header-cell *matHeaderCellDef [ngClass]="'customdeptClass'"> Department </mat-header-cell>
+              <mat-cell *matCellDef="let element" [ngClass]="'customdeptClass'"> 
+                  <mat-accordion>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Issue Listing
+                          </mat-panel-title>
+                          
+                        </mat-expansion-panel-header>
 
-  <mat-paginator #paginator
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 20]"
-                 [showFirstLastButtons]="true">
-  </mat-paginator>
-</div>
+                        <mat-card class= "card">
+                            <mat-grid-list cols="2" rowHeight="2:1">
+                              <mat-grid-tile>
+                                  <mat-card class = "detail">
+                            
+                            
+                                      <mat-card-title>
+                                        Detail
+                                      </mat-card-title>
+                                    </mat-card>
+
+                              </mat-grid-tile>
+                              <mat-grid-tile>
+                                  <div class = "map">
+                                      <mat-card-content>
+                                          <app-map></app-map>
+                                        </mat-card-content>
+                                  </div>
+                                  <br><br><br>
+                                  
+                              </mat-grid-tile>    
+
+                            </mat-grid-list>
+                            <div class = "button">
+                                <button mat-button color="primary" (onclick) = "verify()">Verify</button>
+                              </div>
+                            
+                            <div class = "button2">
+                                <button mat-button color="primary" (onclick) = "nav()">History</button>
+                            </div>
+                          
+                        </mat-card>
+
+                      </mat-expansion-panel>
+                      
+                    </mat-accordion>
+
+              </mat-cell>
+
+            </ng-container>
+        
+      </div>
+      
+      <!-- Weight Column -->
+      <div style="float:right">
+          <ng-container matColumnDef="title" class="title">
+              <mat-header-cell *matHeaderCellDef> Title / Description </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+            </ng-container> 
+      </div>
+      
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="loc">
+        <mat-header-cell *matHeaderCellDef> Location Cordinates </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.loc}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="verify">
+        <mat-header-cell *matHeaderCellDef> Location Cordinates </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.verify}} 
+            
+                
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator #paginator
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]"
+                   [showFirstLastButtons]="true">
+    </mat-paginator>
+  </div>
+
+
+
+
+
+ 

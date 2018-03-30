@@ -10,13 +10,17 @@
     max-height: 500px;
   }
 
-  .note {
-    max-width: 400px;
-    max-height: 400px;
-    position: relative;
-    left: 400px;
-    
+  .note-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
   }
+  
+  .note-full-length {
+    width: 100%;
+  }
+  
+  
   
   .wizard {
     max-height: 400px;

@@ -8,7 +8,7 @@ import { IssueListingComponent } from './issue-listing/issue-listing.component';
 import { SignupComponent } from './signup/signup.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { IssueDetailsComponent } from './issue-details/issue-details.component'
-import { TableBasicExample } from './ticket-details/ticket-details.component'
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component'
 
 
 export const appRoutes:Routes = [
@@ -18,7 +18,7 @@ export const appRoutes:Routes = [
     { path: 'wizard', component: WizardComponent},
     { path: 'issue-list', component: IssueListingComponent },
     { path: 'issue-det', component: IssueDetailsComponent},
-    { path: 'ticketdetail', component: TableBasicExample},
+    { path: 'ticketdetail', component: TicketDetailsComponent},
     { path: '', redirectTo: '/', pathMatch: 'full' }
 ]
 

@@ -6,7 +6,7 @@ import { MaterialModule } from '../material.module'
   templateUrl: './ticket-details.component.html',
   styleUrls: ['./ticket-details.component.css']
 })
-export class TableBasicExample {
+export class TicketDetailsComponent {
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 }
