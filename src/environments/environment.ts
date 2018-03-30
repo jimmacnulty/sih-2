@@ -12,5 +12,6 @@ export const environment = {
     projectId: "sih-2-3e356",
     storageBucket: "sih-2-3e356.appspot.com",
     messagingSenderId: "693586778503"
+
   }
 };

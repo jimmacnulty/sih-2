@@ -24,7 +24,7 @@ export const appRoutes:Routes = [
         path: 'issue-det',
         component: IssueDetailsComponent 
     },
-    { path: 'ticket-list', component: TicketListingComponent},
+    { path: 'ticketlist', component: TicketListingComponent},
     { path: '', redirectTo: '/', pathMatch: 'full' }
 ]
 

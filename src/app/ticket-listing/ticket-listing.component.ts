@@ -12,14 +12,14 @@ import { Observable } from 'rxjs/Observable'
 export class TicketListingComponent implements OnInit {
 
 
-  items: Observable<any>
-  role: Observable<any>
-  id: Observable<any>
+  users: Observable<any[]>;  
+
+  constructor(private af: AngularFireAuth, private db: AngularFireDatabase) {
   
-  constructor (private af : AngularFireAuth, db : AngularFireDatabase) { 
-    db.object('users/' + af.auth.currentUser.uid).valueChanges().subscribe(data => {
-      console.log(data);
+    db.list('users/' + af.auth.currentUser.uid, ref=> ref).valueChanges().subscribe(data => {
+      console.log(data)
     })
+
 
   }
 

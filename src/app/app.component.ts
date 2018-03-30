@@ -14,7 +14,9 @@ export class AppComponent implements OnInit{
   
   isLoggedIn: boolean = false;
   
-  constructor(private af: AngularFireAuth, private router:Router) {
+  constructor(private af: AngularFireAuth, private router: Router) {
+    
+
     this.af.authState.subscribe(user => {
       if (user) {
         //logged in
@@ -24,12 +26,21 @@ export class AppComponent implements OnInit{
       } else{
         //logged out
         this.isLoggedIn = false;
-        this.router.navigate(['/login']);
+        console.log('Logged out!!');
+        //this.router.navigate(['/login']);
       }
     })
   }
 
   ngOnInit() {
+  }
+
+  onAdd() {
+    this.router.navigate(['/add'])
+  }
+
+  onTicketList() {
+    this.router.navigate(['/ticketlist'])
   }
 
   onLogIn() {
