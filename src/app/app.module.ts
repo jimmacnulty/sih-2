@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { AppComponent } from './app.component';
@@ -61,6 +62,7 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    AngularFireDatabaseModule,
     FormsModule,
     ArchwizardModule,
     AngularFirestoreModule,
