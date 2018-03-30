@@ -6,10 +6,10 @@
   
       <!-- Position Column -->
       <div class = "id">
-          <ng-container matColumnDef="id">
-              <mat-header-cell *matHeaderCellDef  [ngClass]="'customWidthClass'"> ID </mat-header-cell>
+          <ng-container matColumnDef="description">
+              <mat-header-cell *matHeaderCellDef  [ngClass]="'customWidthClass'"> Description </mat-header-cell>
               
-              <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass'"> {{element.id}} </mat-cell>
+              <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass'"> {{element.description}} </mat-cell>
               
             </ng-container>
       
@@ -18,14 +18,15 @@
         
       <!-- Name Column -->
       <div class = "dept">
-          <ng-container matColumnDef="dept">
-              <mat-header-cell *matHeaderCellDef [ngClass]="'customdeptClass'"> Department </mat-header-cell>
+          <ng-container matColumnDef="location">
+              <mat-header-cell *matHeaderCellDef [ngClass]="'customdeptClass'"> Location </mat-header-cell>
               <mat-cell *matCellDef="let element" [ngClass]="'customdeptClass'"> 
                   <mat-accordion>
                       <mat-expansion-panel>
                         <mat-expansion-panel-header>
                           <mat-panel-title>
-                            Issue Listing
+                            Lat : {{elemnent.location.lat}} <br>
+                            Lng : {{elemnent.location.lng}}
                           </mat-panel-title>
                           
                         </mat-expansion-panel-header>
@@ -54,11 +55,11 @@
 
                             </mat-grid-list>
                             <div class = "button">
-                                <button mat-button color="primary" (onclick) = "verify()">Verify</button>
+                                <button mat-button color="primary" (click) = "verify(element.uid, element.$id)">Verify</button>
                               </div>
                             
-                            <div class = "button2">
-                                <button mat-button color="primary" (onclick) = "nav()">History</button>
+                            <div class = "button">
+                                <button mat-button color="primary" (click) = "nav()">History</button>
                             </div>
                           
                         </mat-card>
@@ -76,7 +77,7 @@
       <!-- Weight Column -->
       <div style="float:right">
           <ng-container matColumnDef="title" class="title">
-              <mat-header-cell *matHeaderCellDef> Title / Description </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef> Title</mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
             </ng-container> 
       </div>
@@ -84,12 +85,12 @@
   
       <!-- Symbol Column -->
       <ng-container matColumnDef="loc">
-        <mat-header-cell *matHeaderCellDef> Location Cordinates </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.loc}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef> UID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.uid}} </mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="verify">
-        <mat-header-cell *matHeaderCellDef> Location Cordinates </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Verified </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.verify}} 
             
                 

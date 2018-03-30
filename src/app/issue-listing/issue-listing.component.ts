@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Router } from '@angular/router';
-import {  } from 'angularfire2/database'
 
 @Component({
   selector: 'app-issue-listing',
@@ -10,17 +10,24 @@ import {  } from 'angularfire2/database'
 })
 export class IssueListingComponent implements OnInit {
 
-  displayedColumns = ['id', 'dept', 'title', 'loc', 'verify'];
-  dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
+  displayedColumns = ['description', 'location', 'title', 'uid', 'verify'];
+  data: any;
+  dataSource: any;
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.data.subscribe(data => {
+      this.dataSource = new MatTableDataSource<Element>(data);
+      this.dataSource.paginator = this.paginator;
+    })
   }
 
-  constructor(private router : Router, ) { }
+  constructor(private router: Router, private db: AngularFireDatabase) {
+    this.data = this.db.list('issues/0').valueChanges();
+
+   }
 
   ngOnInit() {
   }
@@ -38,18 +45,21 @@ export class IssueListingComponent implements OnInit {
 }
 
 export interface Element {
-  id: any;
-  dept: string;
-  title: string;
-  loc: number;
+  description: any;
+  location: {
+    lat: any,
+    lng: any
+  },
+  title: any;
+  uid: any;
   verify: boolean;
 }
 
-const ELEMENT_DATA: Element[] = [
-  { id: 1, dept: 'Hydrogen', title: 'bithchchc', loc: 121.12, verify: true },
-  { id: 2, dept: 'Heliem', title: 'skjdnfjsdf', loc: 122.12, verify: false },
-  { id: 3, dept: 'Lithium', title: 'xmcvcxm,v', loc: 129.12, verify: false },
-  { id: 4, dept: 'Beryllium', title: 'weuiuroqrq', loc: 421.12, verify: true },
-  { id: 5, dept: 'Argon', title: 'lnxcjvnkjxc', loc: 151.12, verify: false }
+// // const ELEMENT_DATA: Element[] = [
+// //   { id: 1, dept: 'Hydrogen', title: 'bithchchc', loc: 121.12, verify: true },
+// //   { id: 2, dept: 'Heliem', title: 'skjdnfjsdf', loc: 122.12, verify: false },
+// //   { id: 3, dept: 'Lithium', title: 'xmcvcxm,v', loc: 129.12, verify: false },
+// //   { id: 4, dept: 'Beryllium', title: 'weuiuroqrq', loc: 421.12, verify: true },
+// //   { id: 5, dept: 'Argon', title: 'lnxcjvnkjxc', loc: 151.12, verify: false }
   
-];
+// ];

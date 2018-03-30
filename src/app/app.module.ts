@@ -5,7 +5,7 @@ import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ArchwizardModule } from 'angular-archwizard';
-
+import { environment } from "../environments/environment";
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
@@ -58,7 +58,7 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-
+    AngularFireDatabaseModule,
     FormsModule,
     ArchwizardModule,
 
