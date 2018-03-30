@@ -29,7 +29,7 @@ import { SignupComponent } from './signup/signup.component';
 
 import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
-
+import { HistoryService } from './services/history.service';
 
 
 
@@ -73,7 +73,7 @@ import { AgmCoreModule } from '@agm/core';
     })
 
   ],
-  providers: [ AngularFireAuth, AngularFireDatabase ],
+  providers: [ AngularFireAuth, AngularFireDatabase, HistoryService ],
   bootstrap: [AppComponent]
 })  
 
