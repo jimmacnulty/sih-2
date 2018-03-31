@@ -54,11 +54,11 @@ export class IssueListingComponent implements OnInit {
     this.router.navigate(['/ticketdetail'])
   }
 
-  verify(uid, tid){
-    //takeNote();
-    let note = 'Verified the issue.'
-    this.history.create(tid, uid, note, 'verified');
-    this.history.save();
+  verify(uid, tid, location){
+    // let note = 'Verified the issue.'
+    // this.history.create(tid, uid, note, 'verified');
+    // this.history.save();
+    this.history.alert(tid, uid, Date.now(), location);
   }
 
 
