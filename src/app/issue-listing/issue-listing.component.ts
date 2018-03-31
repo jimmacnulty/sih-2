@@ -68,9 +68,9 @@ export class IssueListingComponent implements OnInit {
   }
 
   verify(uid, tid, location){
-    // let note = 'Verified the issue.'
-    // this.history.create(tid, uid, note, 'verified');
-    // this.history.save();
+    let note = 'Verified the issue.'
+    this.history.create(tid, uid, note, 'verified');
+    this.history.save();
     this.history.alert(tid, uid, Date.now(), location);
   }
 
