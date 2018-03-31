@@ -47,7 +47,7 @@
                 <mat-grid-tile>
                     Location : <br/><br/>
                     Lat : {{ issue.location.lat | json }} <br/><br/>
-                    Lng : {{ issue.location.lng | json}}  <br/><br/>
+                    Lng : {{ issue.location.lng | json }}  <br/><br/>
       
       
                     Title :  {{ issue.title | json }} <br/><br/>
@@ -81,10 +81,10 @@
             
             <mat-grid-tile></mat-grid-tile>
             <mat-grid-tile>
-              <button mat-raised-button color="primary" *ngIf="issue.verified" (click) = "resolve()">Resolved</button>
-              <button mat-raised-button color="primary" (click) = "increament()">Report Spam</button>
-              <button mat-raised-button color="primary" (click) = "nav()">History</button>
-              <button mat-raised-button color="primary" (click) = "verify(issue.uid, issue.key, issue.location)">Accept</button>
+              <button mat-raised-button color="primary" *ngIf="issue.issue == 1" (click) = "resolve()">Resolved</button>
+              <button mat-raised-button color="primary" *ngIf="issue.status == 0 || issue.status == 1" (click) = "increament()">Report Spam</button>
+              <button mat-raised-button color="primary" *ngIf="issue.status == 1 || issue.status == 2" (click) = "nav()">History</button>
+              <button mat-raised-button color="primary" *ngIf="issue.status == 0" (click) = "verify(issue.uid, issue.key, issue.location)">Accept</button>
             </mat-grid-tile>
           </mat-grid-list>
         </div>

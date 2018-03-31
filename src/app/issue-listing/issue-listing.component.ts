@@ -31,17 +31,14 @@ export class IssueListingComponent implements OnInit {
   dataSource: any;
 
 
-  issues: any[];
 
+  issues: any;
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
     constructor(private router: Router, private db: AngularFireDatabase, private history: HistoryService, private af: AngularFireAuth) {
-      this.data = this.db.list('issues/0').snapshotChanges();
-
-      // this.issues = this.db.list('issues/0').valueChanges();
-      
+      this.data = this.db.list('issues/0').snapshotChanges()
   
      }
 

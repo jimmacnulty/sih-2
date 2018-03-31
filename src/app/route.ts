@@ -16,7 +16,7 @@ export const appRoutes:Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'wizard', component: WizardComponent},
-    { path: 'issue-list', component: IssueListingComponent },
+    { path: 'issuelist', component: IssueListingComponent },
     { path: 'issue-det', component: IssueDetailsComponent },
     { path: 'ticketlist', component: TicketListingComponent},
     { path: 'ticketdetail', component: TicketDetailsComponent},

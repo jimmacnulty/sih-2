@@ -40,7 +40,7 @@ export class AppComponent implements OnInit{
   }
 
   onTicketList() {
-    this.router.navigate(['/ticketlist'])
+    this.router.navigate(['/issuelist'])
   }
 
   onLogIn() {
