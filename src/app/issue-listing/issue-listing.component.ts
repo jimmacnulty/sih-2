@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource} from '@angular/material';
 import { AngularFireDatabase, snapshotChanges } from 'angularfire2/database'
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { Router } from '@angular/router';
 import { HistoryService } from "../services/history.service";
+import { AngularFireAuth } from 'angularfire2/auth';
+import { MaterialModule } from '../material.module';
 
 @Component({
   selector: 'app-issue-listing',
@@ -21,29 +23,40 @@ import { HistoryService } from "../services/history.service";
 })
 export class IssueListingComponent implements OnInit {
 
+  today = Date.now()
+  fixedTimezone = '2015-06-15T09:03:01+0900';
+
   displayedColumns = ['description', 'location', 'title', 'uid', 'verify'];
   data: any;
   dataSource: any;
 
 
+  issues: any[];
+
+
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
-    constructor(private router: Router, private db: AngularFireDatabase, private history: HistoryService) {
+    constructor(private router: Router, private db: AngularFireDatabase, private history: HistoryService, private af: AngularFireAuth) {
       this.data = this.db.list('issues/0').snapshotChanges();
+
+      // this.issues = this.db.list('issues/0').valueChanges();
+      
   
      }
 
   ngAfterViewInit() {
     this.data.subscribe(snapshotChanges => {
       let data = [];
-      snapshotChanges.forEach(x => {
-        let y = x.payload.val();
-        y['key'] = x.key;
-        data.push(y);
-      });
-      console.log(data);
-      this.dataSource = new MatTableDataSource<Element>(data);
-      this.dataSource.paginator = this.paginator;
+      if (snapshotChanges.length > 0) {
+        snapshotChanges.forEach(x => {
+          console.log(x);
+          let y = x.payload.val();
+          y['key'] = x.key;
+          data.push(y);
+        });
+        this.issues = data;
+      }
     })
   }
 
@@ -58,10 +71,52 @@ export class IssueListingComponent implements OnInit {
   verify(uid, tid){
     //takeNote();
     let note = 'Verified the issue.'
+    console.log(uid);
     this.history.create(tid, uid, note, 'verified');
     this.history.save();
   }
 
+  increament() {
+
+    this.db.database.ref('users/' + this.af.auth.currentUser.uid + '/').once('value', data => {
+      let counter = data.val().counter + 1;
+      this.db.object('users/' + this.af.auth.currentUser.uid + '/').update({ counter: counter });
+
+      this.db.list('SMSQueue').push({
+        contact: data.val().contact,
+        message: "Your submitted issue has been reported spam. You have (" + (5 - counter) + "/5) chances remaining, after which you will be banned from posting any further issues."
+      })
+    })
+
+    
+    
+  //  this.db.database.ref('users/' + this.af.auth.currentUser.uid + '/counter').once('value', data => {
+      
+  //     let num = data.val() + 1
+  //     this.db.object('users/' + this.af.auth.currentUser.uid + '/counter').set(num);
+     
+    
+  //     if (num > 3) {
+  //       this.db.database.ref('issues/' + this.af.auth.currentUser.uid + '/verified').set('false');
+  //     }
+  //   })
+
+  }
+  
+  gen() {
+    this.db.database.ref('users' + this.af.auth.currentUser.uid + '/contact').once('value', data => {
+      console.log(data)
+    })
+    // this.db.database.ref('smsQueue').set('value', data => {
+
+    //   })
+  }
+
+  resolve() {
+    
+  }
+
+  
 
 
 }

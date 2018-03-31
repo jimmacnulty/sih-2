@@ -4,28 +4,34 @@
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
   
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      <!-- Note ID Column -->
+      <ng-container matColumnDef="noteid">
+        <mat-header-cell *matHeaderCellDef> Note Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.noteid}} </mat-cell>
       </ng-container>
   
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      <!-- Issue ID Column -->
+      <ng-container matColumnDef="issueid">
+        <mat-header-cell *matHeaderCellDef> Issue Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.issueid}} </mat-cell>
       </ng-container>
   
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
       </ng-container>
   
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      <!-- Stage Column -->
+      <ng-container matColumnDef="stage">
+        <mat-header-cell *matHeaderCellDef> Stage </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.stage}} </mat-cell>
+      </ng-container>
+
+      <!-- Verification Column -->
+      <ng-container matColumnDef="verification">
+        <mat-header-cell *matHeaderCellDef> Verification </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.verification}} </mat-cell>
       </ng-container>
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -37,18 +43,22 @@
 
 
 <form class = "note-form">
-  
   <mat-card>
-      <mat-form-field class = "note-full-length">
-          <input matInput placeholder="Note" value="">
-          <mat-form-field class="example-full-width">
-          <textarea matInput placeholder = "Detail"></textarea>
-          </mat-form-field>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput #message maxlength="256" placeholder="Message">
+          <mat-hint align="start"><strong>Write meaning-full info</strong> </mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #message maxlength="256" placeholder="Department">
+        </mat-form-field>  
+        <mat-form-field>
+          <input matInput #message maxlength="256" placeholder="Stage Number">
         </mat-form-field>
         <div class = "submit">
-            <button mat-button>Add</button>
-        
+          <button mat-raised-button color="primary" (click) = "addNote()">Add Note</button>
         </div>
+      </form>
   </mat-card>
   
 </form>

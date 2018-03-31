@@ -32,6 +32,16 @@ export class HistoryService {
             'status' : this.status,
         }
         this.db.list('issues/0/' + this.tid + '/history/').push(data);
+        this.db.object('issues/0/' + this.tid).update({ verified: true, status: 1 });
+        this.db.database.ref('users/' + this.who).once('value', data => {
+            console.log(data.val());
+            let d = {
+                contact: data.val()['contact'],
+                message: 'You query for ticket ID:' + this.tid +' has been verified and under process.'
+            }
+            console.log(d);
+            this.db.list('SMSQueue').push(d);
+        })
     }
 
     

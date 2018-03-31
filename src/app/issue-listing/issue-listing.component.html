@@ -1,110 +1,92 @@
 
 
+<mat-accordion *ngFor = "let issue of issues">
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+         &nbsp;&nbsp;
+          <div class="div99">
+              <i class="material-icons">warning</i>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;              <b>{{ issue.description | json }}</b>
+            </div>  
+              <div class = "div99">
+                  {{today | date:'fullDate'}}
+              </div>
 
-<div class="example-container mat-elevation-z8">
+              <div class = "div99">
+                  <mat-chip-list>
+                    <mat-chip  color = "accent" selected = "true" *ngIf = "issue.verified == true;">
+                        Verified
+                    </mat-chip>
+                    <mat-chip color = "primary" selected = "true" *ngIf = "!issue.verified == true">
+                        Not Verified
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+             
+        </mat-expansion-panel-header>
 
-    <mat-table #table [dataSource]="dataSource">
-  
-      <!-- Position Column -->
-      <div class = "id">
-          <ng-container matColumnDef="description">
-              <mat-header-cell *matHeaderCellDef  [ngClass]="'customWidthClass'"> Description </mat-header-cell>
-              
-              <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass'"> {{element.description}} </mat-cell>
-              
-            </ng-container>
+        <div >
+            <mat-grid-list cols="3" rowHeight="10:1">
+                <mat-grid-tile>
+                    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  
+                    Map Location : 
+                </mat-grid-tile>
+                <mat-grid-tile> 
+                 Report Image : 
+                </mat-grid-tile>
+               
+              </mat-grid-list>
+</div>
+
+        <div >
+            <mat-grid-list cols="3" rowHeight="2:1">
+                <mat-grid-tile>
+                    Location : <br/><br/>
+                    Lat : {{ issue.location.lat | json }} <br/><br/>
+                    Lng : {{ issue.location.lng | json}}  <br/><br/>
       
-
-      </div>
-        
-      <!-- Name Column -->
-      <div class = "dept">
-          <ng-container matColumnDef="location">
-              <mat-header-cell *matHeaderCellDef [ngClass]="'customdeptClass'"> Location </mat-header-cell>
-              <mat-cell *matCellDef="let element" [ngClass]="'customdeptClass'"> 
-                  <mat-accordion>
-                      <mat-expansion-panel>
-                        <mat-expansion-panel-header>
-                          <mat-panel-title>
-                            Lat : {{element.location.lat}} <br>
-                            Lng : {{element.location.lng}}
-                          </mat-panel-title>
-                          
-                        </mat-expansion-panel-header>
-
-                        <mat-card class= "card">
-                            <mat-grid-list cols="2" rowHeight="2:1">
-                              <mat-grid-tile>
-                                  <mat-card class = "detail">
-                            
-                            
-                                      <mat-card-title>
-                                        Detail
-                                      </mat-card-title>
-                                    </mat-card>
-
-                              </mat-grid-tile>
-                              <mat-grid-tile>
-                                  <div class = "map">
-                                      <mat-card-content>
-                                          <app-map></app-map>
-                                        </mat-card-content>
-                                  </div>
-                                  <br><br><br>
-                                  
-                              </mat-grid-tile>    
-
-                            </mat-grid-list>
-                            <div class = "button">
-                                <button mat-button color="primary" (click) = "verify(element.uid, element.key)">Verify</button>
-                              </div>
-                            
-                            <div class = "button">
-                                <button mat-button color="primary" (click) = "nav()">History</button>
-                            </div>
-                          
-                        </mat-card>
-
-                      </mat-expansion-panel>
-                      
-                    </mat-accordion>
-
-              </mat-cell>
-
-            </ng-container>
-        
-      </div>
       
-      <!-- Weight Column -->
-      <div style="float:right">
-          <ng-container matColumnDef="title" class="title">
-              <mat-header-cell *matHeaderCellDef> Title</mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
-            </ng-container> 
-      </div>
+                    Title :  {{ issue.title | json }} <br/><br/>
       
-  
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="uid">
-        <mat-header-cell *matHeaderCellDef> UID </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.uid}} </mat-cell>
-      </ng-container>
-  
-      <ng-container matColumnDef="verify">
-        <mat-header-cell *matHeaderCellDef> Verified </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.verify}} 
-            
+                    UID : {{ issue.uid | json }} <br/><br/>
+      
+                    
+                    Verified : {{ issue.verified | json }} <br/><br/>
                 
-        </mat-cell>
-      </ng-container>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  
+                  
+                    <app-map style="max-height:300px;max-width:300px;"></app-map>
+                    
+                </mat-grid-tile>
+                <mat-grid-tile *ngIf = "issue.imageUrl"> 
+                  <img style="max-height:300px;max-width:300px;" [src] = "issue.imageUrl"    alt="https://us.123rf.com/450wm/siamimages/siamimages1510/siamimages151001745/46470777-car-auto-accident-icon.jpg?ver=6">
+                  
+                 <!-- IMAGE :  {{ issue.imageUrl | json }} <br/>-->
+                </mat-grid-tile>
+               
+              </mat-grid-list>
   
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-  
-    <mat-paginator #paginator
-                   [pageSize]="10"
-                   [pageSizeOptions]="[5, 10, 20]"
-                   [showFirstLastButtons]="true">
-    </mat-paginator>
-  </div>
+              
+
+        </div>
+<div > 
+        <mat-grid-list cols="2" rowHeight="4:1">
+          
+            
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile>
+              <button mat-raised-button color="primary" *ngIf="issue.verified" (click) = "resolve()">Resolved</button>
+              <button mat-raised-button color="primary" (click) = "increament()">Report Spam</button>
+              <button mat-raised-button color="primary" (click) = "nav()">History</button>
+              <button mat-raised-button color="primary" (click) = "verify(issue.uid, issue.key)">Accept</button>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+        </mat-expansion-panel>
+</mat-accordion>

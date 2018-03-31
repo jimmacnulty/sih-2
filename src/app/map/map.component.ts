@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database'
 
 @Component({
   selector: 'app-map',
@@ -7,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
   
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 21.1794279;
+  lng: number = 79.0600918;
 
-  constructor() { }
+  issues: any;
+  
+  constructor(private db: AngularFireDatabase) {
+    this.issues = this.db.list('issues').valueChanges();
+    
+  }
 
   ngOnInit() {
   }

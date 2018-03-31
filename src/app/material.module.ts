@@ -18,7 +18,8 @@ import {
   MatStepperModule,
   MatGridListModule,
   MatExpansionModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatChipsModule
 
 } from '@angular/material';
 
@@ -42,7 +43,8 @@ import {
     MatStepperModule,
     MatGridListModule,
     MatExpansionModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatChipsModule
     
 ],
   exports: [
@@ -64,7 +66,8 @@ import {
     MatStepperModule,
     MatGridListModule,
     MatExpansionModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatChipsModule
     
   ],
   declarations: [],
