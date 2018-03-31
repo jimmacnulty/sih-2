@@ -1,9 +1,6 @@
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
-import *  as maps from '@google/maps';
-const maps = require('@google/maps').createClient({
-    apiKey: 'AIzaSyC9YhXuCIwp98IRGMMbJypBPVhJaTonx3k'
-});
+import { LocationService } from './location.service';
 
 @Injectable()
 export class HistoryService {
@@ -16,7 +13,7 @@ export class HistoryService {
     public status: any;
 
     constructor( 
-        private db: AngularFireDatabase) { }
+        private db: AngularFireDatabase, private loc:LocationService) { }
     
     create(tid:any, who: any, what: any, status:any, when: any = Date.now()):HistoryService {
         this.who = who;
@@ -37,19 +34,32 @@ export class HistoryService {
             'status' : this.status,
         }
         this.db.list('issues/0/' + this.tid + '/history/').push(data);
+        this.db.object('issues/0/' + this.tid).update({ verified: true, status: 1 });
+        this.db.database.ref('users/' + this.who).once('value', data => {
+            console.log(data.val());
+            let d = {
+                contact: data.val()['contact'],
+                message: 'You query for ticket ID:' + this.tid +' has been verified and under process.'
+            }
+            console.log(d);
+            this.db.list('SMSQueue').push(d);
+        })
     }
 
     alert(tid, uid, timestamp, location) {
-        maps.getAddress(location.lat, location.lng).subscribe(res => {
+        this.loc.getAddress(location.lat, location.lng).subscribe(res => {
         let results = res.json().results;
             results.forEach(x => {
                 if(x['types'] == "administrative_area_level_2,political"){
                 let city = x.address_components[0].long_name;
-                console.log(city);
-                }
-            })
-        });
-            
+                this.db.list('alerts/' + city).push({
+                    tid : tid,
+                    timestamp: timestamp
+                })
+            }
+        })
+    });
+        
         // this.db.list('alerts/')
     }
 

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../material.module'
+import { MaterialModule } from '../material.module';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-ticket-details',
@@ -7,25 +11,27 @@ import { MaterialModule } from '../material.module'
   styleUrls: ['./ticket-details.component.css']
 })
 export class TicketDetailsComponent {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['noteid', 'issueid', 'description', 'stage', 'verification'];
   dataSource = ELEMENT_DATA;
+
+
+  constructor(private af: AngularFireModule, private db: AngularFireDatabase) {
+    
+  }
 }
 
 export interface Element {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  noteid: any;
+  issueid: any;
+  description: string;
+  stage: number;
+  verification: string;
 }
 
 const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  
+  { noteid: 1, issueid: 2, description: 'This is first', stage: 3, verification: 'true' },
+  { noteid: 2, issueid: 3, description: 'This is second', stage: 1, verification: 'true' },
+  { noteid: 3, issueid: 1, description: 'This is third', stage: 4, verification: 'true' },
+  { noteid: 4, issueid: 4, description: 'This is fourth', stage: 2, verification: 'true' },
+  { noteid: 5, issueid: 6, description: 'This is fifth', stage: 3, verification: 'true' }
 ];
